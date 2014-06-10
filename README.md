@@ -4,7 +4,9 @@
 - Remember the proverb game we played on the first day of Bootcamp?
 - Our goal is to create an automatic version of that.
 
+
 <p align='center'>![proverb words](http://jamespruch.files.wordpress.com/2009/10/proverbs-esv.jpg =400x)
+
 
 - We will do this using a [Markov chain](http://en.wikipedia.org/wiki/Markov_chain).
 	- A Markov chain takes a group of sample input strings and uses them to output a new string.
