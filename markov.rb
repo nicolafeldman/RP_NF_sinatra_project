@@ -37,15 +37,20 @@ f.each_line do |line|
  
 f.close
 
-	pref_probs = prefixes
-
-	pref_probs.each do |prefix, arr|
+	#pref_probs = prefixes
+	prefix_prob={}
+	prefixes.each do |prefix, arr|
+		
+		prefixprob[arr.map { |suffix| [suffix,prob]}]
 		#arr = prefixes[prefix]
 		total_words = arr.length
-		arr.each do |item|
-			occurrences = count_words(arr, item)
+		arr.each do |suffix|
+			occurrences = count_words(arr, suffix)
 			prob = occurrences/total_words
-			item = {item => prob}
+
+			#suffix = {suffix => prob}
+			pref_probs[prefix][suffix]=prob
+			binding.pry
 		end
 	end
 
