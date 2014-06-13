@@ -1,10 +1,10 @@
 #require 'sinatra'
 require 'pry'
 
-def count_words(hash, word)
+def count_words(arr, word)
 	num = 0
-	hash.each do |key, value|
-		if key == word
+	arr.each do |item|
+		if item == word
 			num += 1
 		end
 	end
@@ -33,6 +33,25 @@ f.each_line do |line|
 		# suffixlist.push(suffix)
 		# prefixes[prefix] = suffixlist
 	end
+	end
+ 
+f.close
+
+	pref_probs = prefixes
+
+	pref_probs.each do |prefix, arr|
+		#arr = prefixes[prefix]
+		total_words = arr.length
+		arr.each do |item|
+			occurrences = count_words(arr, item)
+			prob = occurrences/total_words
+			item = {item => prob}
+		end
+	end
+
+
+
+
 
 	# a.each_with_index do |prefix, i|
 	# 	suffix=a[i+1]
@@ -62,9 +81,7 @@ f.each_line do |line|
 
 	# end
 	
-end
- 
-f.close
+
 # binding.pry
 
 
