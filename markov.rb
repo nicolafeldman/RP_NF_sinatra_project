@@ -13,38 +13,54 @@ end
 
 prefixes={}
 
+# suffixlist = []
+
 f=File.open('proverbs.txt', 'r')
 f.each_line do |line|
 	line=line.downcase
 	a=line.split(' ')
 
 	a.each_with_index do |prefix, i|
-		suffix=a[i+1]
-		
+		suffix = a[i + 1]
+
 		if prefixes.has_key?(prefix)
-			initialwords=(prefixes[prefix].length+1.0)
-			occur = count_words(prefixes[prefix],suffix)
-			prefixes[prefix][suffix]=occur/initialwords
+			prefixes[prefix].push(suffix)
 
-			# if prefixes[word].has_key(a[i+1])
-			# 	prob
-			# end
-			
-			prefixes[prefix].each do |suffix, prob|
-				if prefixes[prefix].has_key?(suffix)
-					prefixes[prefix][suffix]=prob
-				else
-					#ccurrences = count_words(prefixes[word], suffix)
-				#prob=occurrences/initialwords
-				prob=1.0/initialwords
-				prefixes[prefix][suffix]=prob 
-				end
-			end
-
-		else prefixes[prefix]={suffix=>1} 
+		else prefixes[prefix] = [suffix]
 		end
-
+		#suffixlist ||= []
+		
+		# suffixlist.push(suffix)
+		# prefixes[prefix] = suffixlist
 	end
+
+	# a.each_with_index do |prefix, i|
+	# 	suffix=a[i+1]
+		
+	# 	if prefixes.has_key?(prefix)
+	# 		initialwords=(prefixes[prefix].length+1.0)
+	# 		occur = count_words(prefixes[prefix],suffix)
+	# 		prefixes[prefix][suffix]=occur/initialwords
+
+	# 		# if prefixes[word].has_key(a[i+1])
+	# 		# 	prob
+	# 		# end
+			
+	# 		prefixes[prefix].each do |suffix, prob|
+	# 			if prefixes[prefix].has_key?(suffix)
+	# 				prefixes[prefix][suffix]=prob
+	# 			else
+	# 				#ccurrences = count_words(prefixes[word], suffix)
+	# 			#prob=occurrences/initialwords
+	# 			prob=1.0/initialwords
+	# 			prefixes[prefix][suffix]=prob 
+	# 			end
+	# 		end
+
+	# 	else prefixes[prefix]={suffix=>1} 
+	# 	end
+
+	# end
 	
 end
  
