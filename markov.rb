@@ -11,6 +11,8 @@ def count_words(arr, word)
 	num
 end
 
+
+def markov
 prefixes={}
 
 # suffixlist = []
@@ -37,22 +39,32 @@ f.each_line do |line|
  
 f.close
 
-	#pref_probs = prefixes
-	prefix_prob={}
+	#prefix_prob = {}
+	#prefix_prob = Hash[arr.map { |suffix| [suffix,prob]}]
 	prefixes.each do |prefix, arr|
 		
-		prefixprob[arr.map { |suffix| [suffix,prob]}]
-		#arr = prefixes[prefix]
+		prefix_prob = Hash[arr.map { |suffix| [suffix,0]}]
+		prefixes[prefix] = prefix_prob
+		
 		total_words = arr.length
 		arr.each do |suffix|
-			occurrences = count_words(arr, suffix)
+			occurrences = count_words(arr, suffix) + 0.0
 			prob = occurrences/total_words
-
-			#suffix = {suffix => prob}
-			pref_probs[prefix][suffix]=prob
-			binding.pry
+			prefixes[prefix][suffix] = prob
 		end
+		
+		
+		#binding.pry
+		#arr = prefixes[prefix]
+		
+			#suffix = {suffix => prob}
+			#pref_probs[prefix][suffix]=prob
+			#binding.pry
+		end
+
+		prefixes
 	end
+
 
 
 
