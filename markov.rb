@@ -101,7 +101,7 @@ def generate
 	too_short = true
 	while (too_short == true) do
 		proverb = make_proverb
-		if (proverb.split(' ').length < 5)
+		if (proverb.split(' ').length > 5)
 			too_short = false
 		end
 	end
