@@ -71,25 +71,30 @@ def generate
 	word = prefixes.keys.sample
 	string = word
 
-	while (string.split(' ').length < 7) do
+	while (word != nil && string.split(' ').length < 25) do
 		
 		rand_float = rand()
 		suffixes = prefixes[word]
 		
 		top = 0.0
 		suffixes.each do |suffix, prob|
+			if suffix == nil
+				word = nil
+				break
+			end
 			top += prob
 			if rand_float < top
 				string = string + ' ' + suffix
 				word = suffix
 				break
 			end
-		
+
 		end
 	end
 
 	string
 
 end
+
 
 
