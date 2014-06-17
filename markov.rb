@@ -12,7 +12,7 @@ def count_words(arr, word)
 end
 
 
-def markov
+def make_hash
 prefixes={}
 
 # suffixlist = []
@@ -63,43 +63,33 @@ f.close
 		end
 
 		prefixes
+end
+
+
+def generate
+	prefixes = make_hash
+	word = prefixes.keys.sample
+	string = word
+
+	while (string.split(' ').length < 7) do
+		
+		rand_float = rand()
+		suffixes = prefixes[word]
+		
+		top = 0.0
+		suffixes.each do |suffix, prob|
+			top += prob
+			if rand_float < top
+				string = string + ' ' + suffix
+				word = suffix
+				break
+			end
+		
+		end
 	end
 
+	string
 
-
-
-
-
-	# a.each_with_index do |prefix, i|
-	# 	suffix=a[i+1]
-		
-	# 	if prefixes.has_key?(prefix)
-	# 		initialwords=(prefixes[prefix].length+1.0)
-	# 		occur = count_words(prefixes[prefix],suffix)
-	# 		prefixes[prefix][suffix]=occur/initialwords
-
-	# 		# if prefixes[word].has_key(a[i+1])
-	# 		# 	prob
-	# 		# end
-			
-	# 		prefixes[prefix].each do |suffix, prob|
-	# 			if prefixes[prefix].has_key?(suffix)
-	# 				prefixes[prefix][suffix]=prob
-	# 			else
-	# 				#ccurrences = count_words(prefixes[word], suffix)
-	# 			#prob=occurrences/initialwords
-	# 			prob=1.0/initialwords
-	# 			prefixes[prefix][suffix]=prob 
-	# 			end
-	# 		end
-
-	# 	else prefixes[prefix]={suffix=>1} 
-	# 	end
-
-	# end
-	
-
-# binding.pry
-
+end
 
 
