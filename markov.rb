@@ -66,7 +66,7 @@ f.close
 end
 
 
-def generate
+def make_proverb
 	prefixes = make_hash
 	word = prefixes.keys.sample
 	string = word
@@ -94,6 +94,18 @@ def generate
 
 	string
 
+end
+
+def generate
+	proverb = ''
+	too_short = true
+	while (too_short == true) do
+		proverb = make_proverb
+		if (proverb.split(' ').length < 5)
+			too_short = false
+		end
+	end
+	proverb
 end
 
 
