@@ -1,0 +1,544 @@
+Okay so this looks bad Go and read through all of indexhtml and pay special attention to the comments that are written Also check out the blank stylecss file thats in the directory
+
+Also Id load up DocHubio It will make your life easier when looking up this stuff and its way better than the stuff WSchools serves up
+
+ Develop a color scheme
+
+Lets choose a palette of colors to work with for our app You can do this yourself but Id highly suggest going to this color scheme generator and creating one Try using the color rotators complement triad tetrad etc
+
+Once youre happy with what you have click the export button and select HTMLCSS Keep that new tab open for reference The weird numbers that look like  are just Hex colors To use them in your CSS file you must prepend them with a hashtag like so
+
+ My eyes are bleeding
+
+We need to change that disgusting font Try setting the text for your todo class using a line like the following
+
+    fontfamily Helvetica Neue Helvetica Arial sansserif
+If you think that font sucks look up a list of Websafe fonts and try one of those
+
+ Think inside the box
+
+Give the todo and name classes some spunk by changing the text and background colors as well as adjusting the margins and padding to suit your liking You may notice that by default the todo items stack on top of one another This is because div elements automatically are given the display block property Try setting the todo class to have a display none property to see what happens
+
+ Get your priorities straight
+
+Notice the priority priority and priority classes Take advantage of those to give your user some visual representation of how urgent various todo items are There are a few options here You could change the background color of the item depending on what its priority is You could also create a really big border on the left right top or bottom of the todo that has a certain color according to its priority Try to use the colors from your color scheme for this Shoot for the moon
+
+ Its a free country
+
+We need to allow our users to change what they have on their todo list and for that we need some sort of menu This will be a fake menu that doesnt do anything but hang in there
+
+Uncomment all of the divmenu elements so that they show up Experiment with making the text a little bit smaller so that it doesnt distract from the important thing which is the name of each todo item Check out the texttransform property
+
+ Lets get weird
+
+Why show a menu for every todo item Thats distracting Change your menu class so it has  opacity Look up the opacity property to figure out how to make this happen
+
+To make it show up when it needs to be seen use the hover pseudoselector similar to stuff like nthchild in combination with the opacity attribute so that when a user hovers over a todo the menu shows up You might need to use some of the fancy selectors you were exposed to in the CSS Diner
+
+ Lights camera action
+Part 
+
+Its kind of jarring how that menu just flies up out of nowhere when you hover Hard on the eyes Lets have it fade in Youll need o specify some transition attributes Hint
+
+    transition opacity ms easeout ms
+This will transition the opacity attribute over the course of  milliseconds with a ms delay with an easeout easing Whats easing Click
+
+Part 
+
+Make your menu slide out Make sure that its positioned using a relative or absolute property When it isnt active use one of the top | left | right | bottom properties to offset it by a negative number of pixels Then when its active hovered have it slide out by making the top | left | right | bottom property become  instead of a negative number Youll have to change your transition attribute so that it transitions all properties instead of just the opacity property
+ Go wild
+
+Do something else cool to impress your TAs Then move on to the next exercise Later youll put this up online and show it to the whole class
+SQL Assignment
+Working in pairs you are to create a database for your past year at Yale Please create the following tables
+for rating   is the best
+all the different residential colleges including columns for their
+name
+description
+best quality
+worst quality
+food rating 
+overall rating 
+ favorite people including columns for their
+name
+age
+college
+description
+ classes you took including columns for their
+name
+description
+amount of homework 
+teacher rating 
+overall rating 
+your  best experiences including columns for their
+what happened
+who
+when
+where
+your  worst experiences including columns for
+
+what happened
+who
+when
+where
+Please populate your tables accordingly
+
+Now go back and make the following changes
+in your colleges table
+delete Silliman
+change TDs food rating to  and overall rating to  as well
+change TDs description to
+the best residential college
+change Saybrooks description to
+the food sucks
+change Piersons description to
+SOOOO FAR AWAY
+in your favorite people table
+change two peoples age to 
+change people with age  to have a description of lol
+insert Charlie Proctor Timothy Dwight just awesome in general
+now delete anyone not in TD
+in your classes table
+delete your worst class
+change your best class to have a rating of 
+update the description for one of the other classes
+in your best experiences table
+change the dates to their  equivalents
+change  events locations to Timothy Dwight
+delete any event that did not occur in TD
+pick one event and delete it
+in your worst experiences table
+add walking through Silliman
+add eating at Silliman
+add talking to people in Silliman
+change at least two dates and two locations
+delete any event that occured in TD
+Weve provided a template html page for you that will serve as the news feed for
+the news blog you and your friends are launching So far youve just been hard
+coding in the posts on the news feed as new ones are written but youre a coder
+and therefore lazy so this isnt ideal Thankfully embedded Ruby ERB can fix
+this problem Well walk you through converting this html page to an ERB template
+and adding the embedded Ruby to make your job easier
+
+First lets save the boringhtml file as indexhtmlerb This will turn your boring HTML file into an ERB template
+Now try running ruby newsrb which will parse through your new template and generate an HTML file called indexhtml Since we havent embedded any Ruby in the template this will just generate the same page that we started with
+Now that we can render HTML from our template lets start embedding some Ruby in the template In indexhtmlerb include an ERB tag that will place the pages title between the HTML <titl tags Run ruby newsrb to rerender the HTML and check if youve done it correctly
+Now well embed Ruby to generate the posts in the feed As you can see in newsrb we already have three article objects each with instance variables corresponding each the post title date and preview text Lets add ERB tags to place the first articles title date and preview text in the correct spots in our HTML Great If you havent messed up yet you should see exactly the same page
+What we did in the last step we can do for the next two articles which would be great if we only ever wanted three posts in the feed But we dont so we wont Instead lets iterate through the articles array weve defined in newsrb so we can generate an arbitrary number of posts on our feed
+And thats all there is to it Youve capitalized on ERB to make updating your news feed a breeze And in fact this is just how lots of news sites and blogs update their sites with fresh content
+Sinatra CRUD Application
+
+Goal Create an application that can CRUD Create Retrieve Update Destroy youtubesets
+
+ Base Specification Required
+
+Create each of the routes listed in RESTful Routes
+Layout
+Each page should have a navigation bar at the top
+This bar should include a link to Home with the URL 
+It should also include a link to Sets with the URL sets
+Data Input & Storage
+We can assume that only youtube video numbers will be submitted not wwwyoutubecomwatchv=jZVdDl_asYY just jZVdDl_asYY
+Youtube video numbers should be submitted as a newlineseparated list press enter after each link
+Add a description field to each playlist see Songzas playlist descriptions for some fun examples
+Youtube video numbers should be stored in the session in a variable structured as a hash with the format sets SETNAME  name  SETNAME vidnums  VID VID VID description  This is the best playlist ever  
+each set will use its name as the key in the sets hash and will include the keys name and vidnums pointing to a string with the set name and an array with the Youtube links respectively
+Hints for Destroy
+Anchored links <a href can only pass method=post method some claim they also do well with get
+Pure html forms can only pass method=post and method=get
+to pass method=delete in Sinatra we need to enable method overriding by adding _method true in the configure method of our app in the rb file then in the erb file or any part of HTML code we can use method=delete and it will be addressed properly
+For Destroy see httpwwwsinatrarbcomconfigurationhtml
+Only work on one feature at a time heres an example path
+Get a given youtube video to be embedded in an erb file
+Get the application to work for a single hardcoded video stored in a Ruby variable
+Get the application to work by choosing a random video from a hardcoded set stored in a Ruby variable
+Get the application to accept user input of video tags storing them in the session hash
+Use the session hash instead of the hardcoded ruby variables
+The application should work for http but doesnt have to work for https that requires a trick Im not interested in you learning right now
+At least check out the RuboCopRuby Style Guide below
+Routes
+
+Your application should include each of these routes
+
+Sinatra only uses the HTTP Verbs and the URLs Rails additionally uses Controller and Action  these are just here for reference for now
+delete any event that occured in 
+By the end of this exercise youll have a functional webapp version of the Encryptor assignment you coded earlier in the course Heres the rundown of the features the app should have
+
+The app will consist of a single view ie page
+
+The page will have a form with input fields for text to be encrypteddecrypted a rotation number and two submit buttons one to encrypt the text using the rotation value and one to decrypt the text using the rotation value
+
+The page will display up to the last ten encryptionsdecryptions that the user has requested
+
+You can view the live version of our Encryptor app at url here
+
+Tips
+
+You should use the session hash to store the users previous encryption decryption history
+
+Weve opted to display the entries in the users history with the format from_text rotation_number to_text but you can go for something fancier if youd like
+
+The code a hello will assign a to the value hello if a is neither false nor nil This is a fast and elegant method for initializing a variable without overwriting a preexisting nonnil value This may come in handy when you check whether the users session hash has a nonnil value for sessionhistory assuming you decide to store the history under the key history
+
+It might be a good idea to list the users history in reversechronological order ie with the most recent entries listed first To add an item to the front of an array called arr use the unshift method like so arrunshift In this case  will be added as the first element of arr
+Move all of your images to an images folder inside this directory Resize all of the images so that none of the images are more than px wide and px tall Name them according to month janjpg febjpg marjpg  decjpg
+Go on Google and figure out how to
+
+Select multiple things at once using keyboard shortcuts and by using the mouse
+Move linesselections up and down
+Duplicate and delete the current line
+You should memorize these shortcuts Id bet theyve saved me a day of my life by now Once you have a bunch of these down you can join the ranks of the TAs constantly snickering in silence over the newbie mousepushers
+Create a container div in the root of your document then create  children pic divs inside of that container Each pic div needs a description div followed by a picture div
+We need to horizontally center our container div so that it looks nice The easiest way to do this is to give the container a set width in pixels Choose a number between px andpx that is divisible by three Now figure out how to use the auto keyword with the margin css property to center the container div
+To make sure that everything is working as expected give the container a px solid black border and give each pic div a px solid red border
+Give the pic div the correct width so that three of them line up in each row inside of the container div If youre having trouble read this
+
+You will probably need to set a property in your container div for this to work the way you want it to
+
+You will definitely need to give your pic div the property of overflow hidden and probably a marginright px as well
+
+Inside of your description divs write the month of the year in an h tag and following that write a description of each months shenanigans It should look like this
+
+Make your picture divs absolutely positioned so that they start in the upper left corner of the pic div Remember what you learned about how to position the parent of an absolutely positioned element If you need a refresher read through some of this
+
+Youll need to give the picture div  width and height Use an inline style on each picture div to give it the right image For example
+
+<div class=className style=backgroundimage urlhelp_im_trapped_inside_of_this_READMEjp<di
+Make it look nice
+
+Youll need to change the backgroundsize property so that the pictures dont look terrible If your pictures are lined up sorta weird look at this
+
+Things should look similar to this at this point
+Take advantage of the opacity property to make the picture disappear when you hover over the pic div Animate this using transition When you hover over a month it should look like this
+Thats cool but we can do way better Instead of animating the opacity were going to animate a CSS Transform CSS Transforms are the most important feature introduced in CSS and allow us to do amazing things that were completely unimaginable  years ago They have redefined the notion of what a web page is and what it can look like
+
+Look up the transform property and figure out how to do the following to the picture class when its parent pic is hovered over
+
+Rotate  degrees on the Z axis
+Scale by a factor of 
+Translate  on the XAxis
+Translate  on the YAxis
+This part is hard and your TAs are here to help
+
+Annoying bowserspecific issues because were just that cutting edge
+
+Encode these into a transition property Youll notice that if youre in Safari and you hover nothing happens This is because this stuff is so new that we need something called vendor prefixes They are listed here For every property that needs a prefix eg transition add the vendor prefixes with the same values below it Here is an example
+
+className
+    columncount 
+    mozcolumncount 
+    webkitcolumncount 
+
+Once youve done this for your transition property it should animate when you hover over it If it doesnt youve written your pictures transition property wrong
+
+Disaster strikes
+
+Unfortunately youll notice that the moving image gets clipped by the borders of its containing pic div
+
+ Flexbox
+WC to the rescue
+
+Until two years ago there wasnt a good solution to this problem Fortunately the WC drafted a specification of a Flexbot ayout that makes things like these way easier
+
+Remove the overflow hidden and marginright px property from your pic div Refresh your browser to confirm that we have just annihilated our pretty grid layout Well soon fix it
+
+Read this entire guide on Flexbox
+
+Flexbox isnt the most popular way to do layouts these days but in a few years it will be so you are doing yourself a favor by learning how to use it now Change the display flexdirection and flexwrap properties of the container class so that the grid works again
+
+Things should look like this once youve gotten it worked out this image was taken while hovering over the March div
+
+Youll notice that the pic divs that precede the hovered div dont cut the image off but the ones after the hovered div do CSS selectors to the rescue
+
+If youve forgotten look up how to do a sibling selector in CSS Look up the zindex CSS property
+
+Fuse these two ideas together to make sure that pic divs after a hovered pic div have a zindex that keeps them behind the magnified picture
+
+Look up how to do a boxshadow and use one of the online boxshadow generators to give a hovered picture a nice shadow to differentiate it a bit from the other photos
+
+Lets do another transform to make your description of each picture slide out too Transform it when its parent pic is hovered over by
+
+Rotating it  degrees on the Z axis
+Scaling it by a factor of 
+Translating it  on the XAxis
+Translating it  on the YAxis
+Now lets make everything a little sexier
+
+Come up with a color scheme and use it to spruce everything up
+Give some padding to the description class try using borderradius on something
+Go to Google Fonts and use a better font for everything
+Make a heading with a paragraph summary of your last year before the photo gallery Center its text
+Follow instructions at pagesgithubcom to deploy your HTMLCSS files to the internet
+
+Create a new repository named Yearbook
+go to httpgithubcom and click New Repository You can initilize a READMEmd and clone it down from the server
+Put your HTMLCSS files here naming the yearbook page indexhtml and putting the css file in the same root directory
+Get your files onto a ghpages branch of this repository and push
+Your site will appear at GITHUBUSERNAMEgithubioYearbook
+ Heroku optional
+
+Well cover deploying a Sinatra app to Heroku later in this class and well explain all about deployment servers and Heroku
+
+If you get ahead you can try to follow the below instructions to deploy this application using nodejs to serve your two static files This section is totally optional and we dont expect most people to do it
+
+Create two new files packagejson and appjs and fill them with the following code Read over the code you know enough at this point to have a pretty good idea of what is going on These have lots of parallels to how a Sinatra app is set up in ruby but this server is written in Javascript and runs on the Nodejs Javascript framework
+
+packagejson
+
+Cat Facts
+Cats have a  degree field of view where humans only where humans only have  degree field of vision
+Cats sense of smell is  times stronger than that of humansThe cat was seen as a sacred animial in ancient Eqypt and the history of domestic cats dates back to as early as  years
+Cats have  bones in their bodies this is  more than humansCats have a heart rate of between    beats per minute This varies highly between different breeds catsYour Assignment
+Using the Google Voice API ruby gem write a program to text our friend the set of  cat facts listed above Please text the cat facts on a  sec interval
+You will need to use the sleep function to set the  second interval
+Please see the gems GitHub page for instructions on how to send text messages
+For the Google Voice account please use the following login information
+usr charlierproctor@gmailcom
+pwd YaleSummer
+The phone number is
+Part  Organization Class
+Your assignment is to create an Organization class for Yale student organizations
+
+Instance Variables
+
+@name  the name of the organization
+@description  a description of the organization
+@members  an array of the names of the members of the organization
+@money  the amount of money the organization currently has available a float
+@puppy  whether or not the organization has a puppy
+Methods
+
+start by defining your initialize method
+all organizations must have a name
+please have the following default values if no description members money or puppy info is provided during initialization
+description A group at Yale
+members 
+money 
+puppy false
+GET METHODS
+
+get_name should return the name of the organization
+get_description should return the description of the organization
+get_members should return the array of the names of the members of the organization
+get_money should return the amount of money the organization has available
+has_puppy returns true or false as to whether the organization has a puppy
+SET METHODS
+
+set_namename sets the organizations name to name
+set_descriptiondescription sets the organizations description to description
+add_membername adds a member named name to the organization
+delete_membername deletes the member named name from the organization
+if the member specified is not part of the organization please raise an error saying so
+spend_moneyamount spends amount dollars of the organizations money
+if the organization does not have enough money for the purchase please raise an error detailing by how much the organization is short
+add_moneyamount adds amount dollars to the organizations funds
+PUPPIES
+
+buy_puppycost buys a puppy for cost dollars from the organizations funds
+if the organization already has a puppy please raise an error saying so  only  puppy allowed
+if the organziation does not have enough money for the puppy please raise an error explaining by how much the organization is short
+please have the default cost for a puppy set to $
+if the organization is buying a puppy
+@puppy should be set to true
+the organization will pay for the puppy from its @money funds
+sell_puppyamount sells a puppy for amount dollars
+if the organization does not have a puppy to sell please raise an error
+please have the default amount set to $
+if the organization is selling a puppy
+the revenue from the sale should be added to the organizations funds
+@puppy should be set to false
+Part  Event Class
+Now you are to create an Event class which will describe an organizations event
+
+Instance Variables
+
+@name  the name of the event
+@description  a description of the event
+@attendees  an array of the names of the attendees
+@start  a DateTime object representing the start date and time of the event
+@end  a DateTime object representing the end date and time of the event
+Methods
+
+start by defining your initialize method
+all organizations must have a name
+description should have a default value of My awesome event
+attendees should have a default value of 
+start and end should be optional parameters
+leave them as nil if no datetime is provided
+you can expect anything passed to either start or end to be a DateTime object
+use the attr_accessor var method to define a complete set of accessor methods
+see a complete explanation of attr_accessor in the lectures repo
+add_attendeename adds an attendee named name to the event list
+delete_attendeename deletes the attendee named name from the event list
+Part  Person Class
+In this part you will define a Person class which will describe a person
+
+Instance Variable
+
+@name  the name of the person
+@age  an integer representing the age of the person
+@college  the persons residential college if applicable
+Methods
+
+start by defining your initialize method
+all people must have a name
+age should be an optional parameter
+college should also be an optional parameter
+use the attr_accessor var method to define a complete set of accessor methods
+see a complete explanation of attr_accessor in the lectures repo
+Part  Refactoring
+Now its time to go back and refactor our previous code
+
+Within the Organization class change the @members variable to be an array of Person objects
+add_membername should be updated to add a Person object with the @name name to the @members array
+delete_membername should be updated to delete the Person object with the @name name from the @members array
+Within the Event class change the @attendees variable to be an array of Person objects
+add_attendeename should be updated to add a Person object with the @name name
+delete_attendeename should be updated to delete the Person object with the @name name from the @attendees array
+Add an @events array to the Organization class which will be a list of Event objects
+Please define the following additional methods
+get_events returns an organizations events
+Challenge  only return future events
+Challenge  return the events in chronological order
+add_eventevent_object_name adds the Event object named event_object_name to the @events array
+delete_eventevent_name deletes the Event object with the @name event_name from the @events array
+DRANKS
+shining
+
+Unless otherwise specified all classes in this assignment should have a full set of attr_accessor methods
+Parameters marked with a ** are required paramters These parameters must be specified during initialization or given nonempty default values maybe a default price just for convenience
+Optional parameters should still be initialized during the objects initialize method
+they can be initialized as   or whatever
+just have   or whatever as a default value
+Part  The Drinks
+
+Alcohol  Mixers
+
+Start by defining a Alcohol class This is the toplevel class for all alcoholic drinks
+
+it should have the following attributes
+name **
+taste
+origin
+price **  per ounce price
+quantity_left **
+abv  alcohol by volume
+please define the following method
+use_drinkquantity  subtracts the quantity used from the quantity_left
+please raise an error if there is not enough left in the bottle to make the drink
+Next youre going to want to define a Mixer class Sometimes its nice to mix something with your alcohol
+
+name **
+quantity_left **
+price **  per ounce price
+Beer  Wine  Liquor
+
+Please define three classes Beer Wine and Liquor all of which should inherit from your Alcohol class
+
+Beer should have the following attributes
+packaging_type  bottle or can
+shotgunnable
+dark
+Wine should have the following attributes
+red_white_rose
+box
+age
+Liquor should have the following attributes
+
+compatible_mixers  an array of Mixer object ids compatible with the Liquor
+bottle_size
+proof  twice the abv of the liquor
+there shouldnt be a proof attr_writer method  it is a calculated value
+Liquor should also have an add_compatible_mixermixer_id method and a remove_compatible_mixermixer_id method
+
+Liquor
+
+Define the following subclasses all of which should inherit from your Liquor class Vodka Whiskey and Rum
+
+Vodka should have the following attributes
+grain
+dubra
+unleaded_gasoline
+Whiskey should have the following attributes
+age
+type
+Rum should have the following attributes
+variety  silver gold spiced dark
+on_a_pirate_ship
+Part  Cocktails
+
+lebowski
+
+Define a Cocktail class with the following attributes
+
+name **
+size **  in fluid ounces
+total_price  a value calculated from the cost of the drinks in the recipe the portion of each drink used and the size of the cocktail
+there shouldnt be a total_price attr_writer method  it is a calculated value
+recipe **  this stores the combination of alcohol needed to produce the drink
+recipe should be an array of hashes
+each hash should have
+an object_id key with the object id of the drink needed in the mix
+a portion  a float between  and  storing what portion of the cocktail is made up of this specific drink
+Part  The Bar
+
+tron bar
+
+Define a Bar class with the following attributes
+name **
+location
+drinks_available  an array of Alcohol objects and Mixer objects the Bar has available
+The Bar should have an add_drinkdrink_id method to add a drink to the drinks_available array
+Part  The Customer
+
+chance
+
+Define a Customer class with the following attributes
+name **
+age
+gender
+weight
+bar  a Bar object where the Customer is buying hisher drinks
+favorite_drink  the customers favorite cocktail
+bac   drink increases your bac by 
+this is a calculated value there should not be a attr_writer method
+drinks  an array of recent drinks
+this is a calculated value there should not be a attr_writer method
+total_drinks  an integer representing the true number of total drinkns the Customer has consumed
+this is a calculated value there should not be a attr_writer method
+funds
+Time to write some methods
+We are practicing testdriven development First you are to write RSpec tests for the following methods Please write these tests in a speccustomer_specrb file
+Now go ahead and define the following methods
+add_fundsamount and spend_moneyamount  defined as you did in the Organization class
+order_drinkname orders a drink with @name name
+this method should handle Alcohol orders Mixer orders and Cocktail orders
+order_drinkname should
+add the drink to the customers drink array
+if the drink is alcoholic add  to total_drinks
+subtract the drinks cost from the customers funds
+raise an error if the customer doesnt have enough money left
+subtract the drinks size from that bottles quantity_left
+you can use your use_drinkquantity method from the Alcohol class
+call your how_drunk method
+call your forget_drinks method
+how_drunk  based on the Customers bac return the following results
+    happy
+    giggly
+    goofy
+    class clown
+    drunk
+    turn down
+    sunglasses and advil
+  dead
+forget_drinks  under the influence of alcohol our Customers forget the number of drinks they have consumed
+make it so the user only remember hisher last @total_drinks     @bac floor drinks by removing the appropriate number of elements from the drink history array
+after  BAC everything tastes good so make any truthy unleaded_gasoline values falsified
+after  BAC you are now on a pirate ship so make on_a_pirate_ship truthy
+Part  BONUS
+
+jack sparrow
+
+In the Customer classs order_drinkname method check whether the Bar has those drinks available in sufficient quantities
+Calculate the bac based on the Customers weight and the amount of alcohol consumed
+It should look very similar to this

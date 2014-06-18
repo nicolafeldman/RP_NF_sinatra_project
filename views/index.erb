@@ -1,0 +1,20 @@
+<html>
+
+<head>
+<title>Birds Are Dying: A Random Proverb Generator </title>
+<link rel="stylesheet" type="text/css" href="style.css"> 
+</head>
+
+<body>
+<h1> Birds Are Dying: A Random Proverb Generator </h1>
+<form action="/" method="post">
+<input type="submit" value="Bestow Wisdom Upon Me">
+</form>
+<h2> History </h2>
+<% session[:proverbs].each do |proverb|%>
+<%= proverb %>
+<br>
+<%end%>
+</body>
+
+</html>
