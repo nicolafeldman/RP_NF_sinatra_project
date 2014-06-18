@@ -1,0 +1,54 @@
+body {
+	background-size: cover;
+	background-image: url('http://www.myfreetextures.com/wp-content/uploads/2011/06/floral-paper-canvas-or-parchment.jpg')
+}
+
+img:hover {
+	display: inline-block;
+	
+	-webkit-transform: rotateX(180deg);
+}
+
+#center {
+	text-align: center;
+	background-color: 	#B28F47;
+	height: 100%;
+	opacity: .8;
+	padding-top: 30px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-radius: 10px;
+	font-family: Elsie;
+
+}
+
+#title {
+	text-align: center;
+	font-family: Dancing Script;
+	font-size: 25px;
+	padding-top: 40px;
+	text-shadow: 3px 1px #755433;
+	color: #422100;
+	
+}
+
+#button {
+	border-radius: 10px;
+	font-family: Dancing Script;
+	font-size: 20px;
+}
+
+h2 {
+	font-family: Dancing Script;
+	background-color: #755433;
+	font-size: 28px;
+	border-radius: 10px;
+}
+
+#newest {
+	opacity: 0;
+	transition: all 2s ease-out 0ms;
+	font-size: 18px;
+	color: #8A2E00;
+}
+

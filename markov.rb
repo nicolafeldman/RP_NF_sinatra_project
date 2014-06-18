@@ -1,5 +1,4 @@
-#require 'sinatra'
-#require 'pry'
+
 
 def count_words(arr, word)
 	num = 0
@@ -51,6 +50,7 @@ def make_proverb
 	string = word
 
 	while (word != nil) do
+
 		rand_float = rand()
 		suffixes = prefixes[word]
 		
