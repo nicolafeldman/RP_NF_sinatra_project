@@ -15,8 +15,8 @@ img:hover {
 	height: 100%;
 	opacity: .8;
 	padding-top: 30px;
-	padding-left: 15px;
-	padding-right: 15px;
+/*	padding-left: 15px;
+	padding-right: 15px;*/
 	border-radius: 10px;
 	font-family: Elsie;
 
@@ -46,9 +46,9 @@ h2 {
 }
 
 #newest {
-	opacity: 0;
-	transition: all 2s ease-out 0ms;
-	font-size: 18px;
+	font-size: 20px;
 	color: #8A2E00;
+	text-shadow: 1px 1px #755433;
+	color: #422100;
 }
 
