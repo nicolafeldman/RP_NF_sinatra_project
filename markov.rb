@@ -1,4 +1,5 @@
-
+require 'engtagger'
+require 'pry'
 
 def count_words(arr, word)
 	num = 0
@@ -68,7 +69,7 @@ def make_proverb
 			end
 		end
 	end
-	string
+	string.capitalize
 end
 
 def generate
@@ -81,4 +82,36 @@ def generate
 		end
 	end
 	proverb
+end
+
+
+def generate_with_input(input)
+	# puts 'Word to include in proverb:'
+	# input = gets.chomp
+	tgr = EngTagger.new
+	tagged_input = tgr.get_readable(input)
+	pos = tagged_input.split('/').last
+	
+	proverb = ''
+	too_short = true
+	while (too_short == true) do
+		proverb = make_proverb
+		if (proverb.split(' ').length > 5)
+			too_short = false
+		end
+	end
+
+	matching_pos = []
+	proverb_arr = proverb.split(' ')
+	proverb_arr.each do |word|
+		tagged_word = tgr.get_readable(word)
+		pos_word = tagged_word.split('/').last
+		# if pos_word == pos
+		if pos.include?(pos)
+			matching_pos.push(word)
+		end
+	end
+
+	word_to_replace = matching_pos.sample
+	proverb.sub! word_to_replace, input
 end
