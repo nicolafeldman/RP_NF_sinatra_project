@@ -14,12 +14,13 @@
 <div class="pure-u-1-2" id="title">
 <h1> Birds Are Dying: A Random Proverb Generator </h1>
 
-<img src="http://freepngimages.com/wp-content/uploads/2014/05/bird_1.png">
+<img id='bird' src="http://freepngimages.com/wp-content/uploads/2014/05/bird_1.png">
 </div>
 
 <div class="pure-u-1-4" id='center'>
 
 <form action="/" method="post">
+<div id='generator'>
 <input type="submit" value="Bestow Wisdom Upon Me" id="button">
 </form>
 <br>
@@ -28,9 +29,9 @@
 </p>
 <br>
 </div>
-
-<div class="pure-u-1-4">
-<h2> Earlier Wise Words </h2>
+</div>
+<div class="pure-u-1-4" id='history'>
+<div id='heading'><h2><u> Earlier Wise Words </u></h2> </div>
 <% session[:proverbs].reverse.each_with_index do |proverb, i|%>
 <%if i !=0 %>
 <%= proverb %>
@@ -41,7 +42,9 @@
 <%end%>
 
 </div>
+<!-- <div class='background'>
 
+</div> -->
 </body>
 
 </html>

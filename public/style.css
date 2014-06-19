@@ -1,16 +1,33 @@
 body {
+	background-color: #CCB280;
+	/* -webkit-filter: blur(5px);
 	background-size: cover;
-	background-image: url('http://www.myfreetextures.com/wp-content/uploads/2011/06/floral-paper-canvas-or-parchment.jpg')
+	background-image: url('http://www.myfreetextures.com/wp-content/uploads/2011/06/floral-paper-canvas-or-parchment.jpg')*/
 }
 
-img:hover {
+.background{
+	position: absolute;
+	 opacity: .7;
+	 width:100%;
+	 height:100%;
+	background-size: cover;
+	background: url('http://www.myfreetextures.com/wp-content/uploads/2011/06/floral-paper-canvas-or-parchment.jpg')
+	
+}
+
+
+.bird:hover {
+	opacity: 1;
 	display: inline-block;
 	
 	-webkit-transform: rotateX(180deg);
 }
 
 #center {
+	position: relative;
+	opacity: 1;
 	text-align: center;
+	/*top: 50%;*/
 	background-color: 	#B28F47;
 	height: 100%;
 	opacity: .8;
@@ -22,33 +39,67 @@ img:hover {
 
 }
 
+#generator{
+	position: absolute;
+	top: 40%;
+}
+
 #title {
-	text-align: center;
+	postion:relative;
+	opacity: 1;
+	text-align: 20%;
+	text-indent: 
 	font-family: Dancing Script;
 	font-size: 25px;
-	padding-top: 40px;
+	padding-top: 70px;
 	text-shadow: 3px 1px #755433;
 	color: #422100;
+	background: url('http://www.myfreetextures.com/wp-content/uploads/2011/06/floral-paper-canvas-or-parchment.jpg');
+	background-size: cover;
+	background-position: 60% 0%;
 	
 }
 
+h1 {
+	position: relative;
+	left: -50px;
+	top: 10px;
+	word-wrap: normal;
+	text-shadow: 3px 1px #755433;
+	color: #422100;
+	font-family: Dancing Script;
+	font-size: 25px;
+	text-align: center;
+}
 #button {
+	opacity: 1;
 	border-radius: 10px;
 	font-family: Dancing Script;
-	font-size: 20px;
+	font-size: 24px;
 }
 
-h2 {
+#heading {
+	opacity: 1;
 	font-family: Dancing Script;
-	background-color: #755433;
-	font-size: 28px;
+	/*background-color: #755433;*/
+	font-size: 18px;
 	border-radius: 10px;
 }
 
 #newest {
+	opacity: 1;
 	font-size: 20px;
 	color: #8A2E00;
 	text-shadow: 1px 1px #755433;
 	color: #422100;
 }
 
+#history{
+	text-align: center;
+	font-family: Elsie;
+}
+
+#bird{
+	postion: absolute;
+	right: 70px;
+}
