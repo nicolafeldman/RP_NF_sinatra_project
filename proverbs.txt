@@ -226,7 +226,6 @@ A volunteer is worth twenty pressed men
 A woman's place is in the home
 A woman's work is never done
 A word to the wise is enough
-Accidents will happen (in the best-regulated families).
 Adversity makes strange bedfellows
 After a storm comes a calm
 All good things come to he who waits
@@ -269,7 +268,7 @@ Blessed are the peacemakers
 Brevity is the soul of wit
 Business before pleasure
 Caesar's wife must be above suspicion
-Carpe diem (Pluck the day; Seize the day)
+Carpe diem Pluck the day; Seize the day
 Cheats never prosper
 Clothes make the man
 Cold hands, warm heart
@@ -571,7 +570,6 @@ There's an exception to every rule
 There's always more fish in the sea
 There's honour among thieves
 There's many a good tune played on an old fiddle
-There's many a slip 'twixt cup and lip
 There's no accounting for tastes
 There's no smoke without fire
 There's no such thing as bad publicity
